@@ -63,9 +63,10 @@ Key components:
 | Endpoint | Method | Expected Status | Expected Response | Notes |
 |---|---|---|---|---|
 | `/` | GET | 404 | Not Found | Rasa doesn't serve root by default |
-| `/model/parse` | POST | 200 | JSON with intent/entities | Main NLU endpoint |
+| `/model/parse` | POST | 200 | JSON with intent/entities | Main NLU endpoint - `curl -X POST /model/parse -d '{"text":"hello"}'` |
 | `/webhooks/rest/webhook` | POST | 200 | JSON response | Conversational endpoint |
 | `/status` | GET | 200 | Server status | Health check endpoint |
+| `/version` | GET | 200 | Version info | Rasa version endpoint |
 
 ## Expected Warnings
 - Model loading messages during startup
@@ -107,3 +108,25 @@ Key components:
 - Currently uses `rasa/rasa:latest` which could be any version
 - Need to pin to specific version for predictability
 - Should check for recent Rasa releases for security updates
+## Shared Infrastructure
+
+Region: syd1
+
+### MongoDB Cluster
+- Cluster ID: 0cd276e1-6800-40f7-b938-72db4e389863
+- Host: heroku-migration-mongo-29f7181e.mongo.ondigitalocean.com
+- Port: 27017
+- Admin User: doadmin
+- Admin Password: [REDACTED - Available in shared_infra.env]
+- Create app user: `doctl databases user create 0cd276e1-6800-40f7-b938-72db4e389863 <appname>_user`
+- Database created on first write (use app-specific name)
+- Connection string pattern: Available in .env.remote
+
+### Valkey Cluster
+- Cluster ID: ab76d53c-8e07-44ff-b97b-b62815ec66b8
+- Host: heroku-migration-valkey-do-user-8198484-0.m.db.ondigitalocean.com
+- Port: 25061
+- Password: [REDACTED - Available in shared_infra.env]
+- Single default user — use key prefix `<appname>:` for data isolation
+- Connection string: Available in .env.remote
+
