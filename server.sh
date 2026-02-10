@@ -1,8 +1,8 @@
 #!/bin/sh
 
-if [ -z "$PORT"]
+if [ -z "$PORT" ]
 then
-  PORT=5005
+  PORT=8080
 fi
 
 rasa run --enable-api --port $PORT

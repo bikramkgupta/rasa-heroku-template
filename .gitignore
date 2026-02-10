@@ -1,6 +1,10 @@
 .DS_Store
 models/
 
+# Environment files
+.env.docker
+.env.remote
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
