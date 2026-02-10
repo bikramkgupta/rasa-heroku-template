@@ -16,18 +16,17 @@
 **PHASE_A: COMPLETE**
 
 ## Phase B: Deploy to App Platform
-- [ ] B1. Read CLAUDE.md for context
-- [ ] B2. Create DB/user in shared cluster (if needed)
-- [ ] B3. Update .env.remote with DB connection strings
-- [ ] B4. Push secrets to GitHub
-- [ ] B5. Create GitHub Actions deploy workflow
-- [ ] B6. Create/validate .do/app.yaml
-- [ ] B7. Deploy to App Platform
-- [ ] B8. Verify deployment (status, logs, endpoints)
-- [ ] B9. Update CLAUDE.md with deployment details
-- [ ] B10. Final verification
+- [x] B1. Read CLAUDE.md for context
+- [x] B2. Create MongoDB user and configure Valkey access for app
+- [x] B3. Update .env.remote with DB connection strings
+- [x] B4. Push secrets to GitHub
+- [x] B5. Create GitHub Actions deploy workflow
+- [x] B6. Deploy to App Platform (fixed permission issues)
+- [x] B7. Verify deployment (status, logs, endpoints)
+- [x] B8. Update CLAUDE.md with deployment details
+- [x] B9. Final verification - all endpoints working
 
-**PHASE_B: PENDING**
+**PHASE_B: COMPLETE**
 
 ## Blockers
 (none)

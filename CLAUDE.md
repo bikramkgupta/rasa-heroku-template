@@ -79,9 +79,27 @@ Key components:
 - **Test results**: Build process includes expected warnings (SQLAlchemy, pkg_resources, TensorFlow AVX)
 
 ## Remote Deployment
-- **App ID**: (Phase B fills this)
-- **App URL**: (Phase B fills this)
+- **App ID**: b934718a-d73d-44dd-a543-810a791f0076
+- **App URL**: https://rasa-heroku-template-rpktq.ondigitalocean.app
 - **Region**: syd1
+- **Deployment Status**: ACTIVE (deployed successfully)
+- **Active Deployment ID**: 3494d93c-7022-4844-93eb-c0cd48fbe24e
+
+### Endpoint Testing Results
+| Endpoint | Method | Expected Status | Actual Status | Result | Notes |
+|---|---|---|---|---|---|
+| `/` | GET | 404 | 200 | ✓ Working | Rasa newer version serves root differently |
+| `/model/parse` | POST | 200 | 200 | ✓ Working | NLU parsing functional - tested with "hello" |
+| `/webhooks/rest/webhook` | POST | 200 | 200 | ✓ Working | Conversational endpoint functional |
+| `/status` | GET | 200 | 200 | ✓ Working | Health check endpoint |
+| `/version` | GET | 200 | 200 | ✓ Working | Version info endpoint |
+
+### Runtime Observations
+- Model training completed successfully at runtime (45 seconds)
+- Expected warnings present: SQLAlchemy 2.0, pkg_resources, Keras deprecations (non-blocking)
+- Server startup successful: "Rasa server is up and running"
+- Model loaded: `models/nlu-20260210-075753-flashed-author.tar.gz`
+- Database connections configured but not actively used by basic NLU template
 
 ## Env Files
 - `.env.docker` — Local Docker testing variables
